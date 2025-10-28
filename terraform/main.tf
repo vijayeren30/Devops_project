@@ -1,7 +1,7 @@
 # This blueprint does two things:
 # 1. It pulls the container image from your GitHub Registry.
 resource "docker_image" "app_image" {
-  name         = "ghcr.io/vijayeren30/Devops_project:latest" # <-- CHANGE THIS USERNAME
+  name         = "ghcr.io/vijayeren30/devops_project:latest" # <-- CHANGE THIS USERNAME
   keep_locally = true
 }
 

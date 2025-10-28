@@ -52,7 +52,7 @@ jobs:
         context: .
         push: true
         # Make sure your username is correct here
-        tags: ghcr.io/vijayeren30/Devops_project:latest
+        tags: ghcr.io/vijayeren30/devops_project:latest
 
   # JOB 3: Deploy the new image to your Docker Swarm
   deploy:
