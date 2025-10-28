@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DevOps Automation & Pipeline — Project Dashboard</title>
+  <meta name="description" content="Professional single-file landing page for a DevOps Automation & CI/CD Pipeline project." />
+  <style>
+    /* --- Reset & base --- */
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#06b6d4;--glass:rgba(255,255,255,0.03);--success:#10b981}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef6;background:linear-gradient(180deg,#071022 0%, #071429 60%);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+
+    /* --- Layout --- */
+    .container{max-width:1100px;margin:36px auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;background:linear-gradient(135deg,var(--accent),#7c3aed);border-radius:10px;display:grid;place-items:center;font-weight:700;color:#021022}
+    .title{font-size:1.05rem;font-weight:700}
+    .subtitle{font-size:0.85rem;color:var(--muted)}
+
+    nav{display:flex;gap:12px;align-items:center}
+    .btn{background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#021022;border:none}
+
+    /* --- Hero --- */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:28px;align-items:start}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{color:var(--muted);margin-top:10px;line-height:1.5}
+
+    /* --- Features --- */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .feature{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+    .feature h4{margin:0 0 6px 0}
+    .meta{font-size:0.85rem;color:var(--muted)}
+
+    /* --- Pipeline diagram --- */
+    .diagram{margin-top:12px}
+    .stages{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .stage{min-width:110px;background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);text-align:center}
+    .stage small{display:block;color:var(--muted);margin-top:6px}
+
+    /* --- Code block --- */
+    pre{background:#031022;padding:12px;border-radius:8px;overflow:auto;border:1px solid rgba(255,255,255,0.02)}
+    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;color:#cdeef6}
+    .code-row{display:flex;gap:8px;align-items:center}
+    .copy{padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+
+    /* --- Cards area --- */
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .logs{height:200px;overflow:auto;font-family:ui-monospace,monospace;font-size:13px;background:#021426;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+
+    footer{margin:30px 0;color:var(--muted);text-align:center}
+
+    /* --- Responsive --- */
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+    @media (max-width:560px){.features{grid-template-columns:1fr}}
+
+    /* Tiny helpers */
+    .pill{display:inline-block;background:rgba(255,255,255,0.02);padding:6px 8px;border-radius:999px;font-weight:700;font-size:0.8rem}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">CI</div>
+        <div>
+          <div class="title">DevOps Pipeline — Project</div>
+          <div class="subtitle">Automation · CI/CD · Observability</div>
+        </div>
+      </div>
+      <nav>
+        <button class="btn" id="themeToggle" aria-pressed="false" title="Toggle theme">Dark</button>
+        <a class="btn" href="#pipeline">Pipeline</a>
+        <a class="btn primary" id="downloadBtn">Download</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Professional single-file landing page for your DevOps project</h1>
+        <p class="lead">Showcase your CI/CD flow, automation scripts, credentials security notes, and monitoring setup — all in a clean, developer-oriented layout suitable for a README, team demo, or portfolio.</p>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature">
+            <h4>CI / CD</h4>
+            <div class="meta">Pipeline stages, gated approvals, and artifact management.</div>
+          </div>
+          <div class="feature">
+            <h4>Infrastructure as Code</h4>
+            <div class="meta">Terraform, CloudFormation examples and safety notes.</div>
+          </div>
+          <div class="feature">
+            <h4>Observability</h4>
+            <div class="meta">Logging, metrics, and alerts with sample dashboards.</div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card" id="pipeline">
+            <h3 style="margin-top:0">Pipeline Stages</h3>
+            <div class="diagram card" style="padding:12px">
+              <div class="stages" role="list">
+                <div class="stage"><strong>Commit</strong><small>Git</small></div>
+                <div style="font-size:24px;opacity:0.6">→</div>
+                <div class="stage"><strong>Build</strong><small>CI Runner</small></div>
+                <div style="font-size:24px;opacity:0.6">→</div>
+                <div class="stage"><strong>Test</strong><small>Unit / Integration</small></div>
+                <div style="font-size:24px;opacity:0.6">→</div>
+                <div class="stage"><strong>Package</strong><small>Artifact Repo</small></div>
+                <div style="font-size:24px;opacity:0.6">→</div>
+                <div class="stage"><strong>Deploy</strong><small>Staging → Prod</small></div>
+              </div>
+              <p class="muted" style="margin-top:10px;font-size:0.9rem">Tip: Add branch protections and automated policy checks before Deploy.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Quick Commands</h3>
+            <div class="code-row">
+              <pre style="flex:1"><code id="codeSnippet"># run tests locally
+make test
+
+# build and push
+docker build -t myapp:latest .
+docker tag myapp:latest registry.example.com/myapp:latest
+docker push registry.example.com/myapp:latest
+
+# terraform plan/apply
+terraform init
+terraform plan
+terraform apply -auto-approve</code></pre>
+              <button class="copy" id="copyBtn" title="Copy commands">Copy</button>
+            </div>
+            <p class="muted" style="margin-top:8px">Click copy to paste these commands into your terminal. Never store secrets in plain text — use vaults or secrets managers.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <aside style="position:relative">
+        <div class="card">
+          <h3 style="margin-top:0">Status & Quick Links</h3>
+          <p class="pill">Build: <strong id="buildStatus">Passing</strong></p>
+          <p style="margin:10px 0" class="muted">Last run: <span id="lastRun">—</span></p>
+
+          <h4 style="margin-bottom:8px">Integrations</h4>
+          <ul class="muted" style="padding-left:18px;margin-top:0">
+            <li>GitHub Actions / GitLab CI</li>
+            <li>Docker Registry</li>
+            <li>Terraform / Helm</li>
+            <li>Prometheus & Grafana</li>
+          </ul>
+
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <a class="btn" href="#">Repository</a>
+            <a class="btn" href="#">Run Pipeline</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4 style="margin:0 0 8px 0">Live Logs</h4>
+          <div class="logs" id="logs" aria-live="polite">No logs yet — demo mode.
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h3 style="margin-top:0">Security + Best Practices</h3>
+      <ul class="muted">
+        <li>Avoid storing secrets in code; use HashiCorp Vault, AWS Secrets Manager, or GitHub Secrets.</li>
+        <li>Enable branch protection rules and PR reviews for release branches.</li>
+        <li>Use ephemeral build runners and least-privilege service accounts.</li>
+        <li>Run regular dependency vulnerability scans in CI.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <small>Made for developer demos • Customize this file for your project • © DevOps Team</small>
+    </footer>
+  </div>
+
+  <script>
+    // small interactive helpers
+    const lastRunEl = document.getElementById('lastRun');
+    const buildStatus = document.getElementById('buildStatus');
+    const logs = document.getElementById('logs');
+    // set demo timestamps
+    const now = new Date();
+    lastRunEl.textContent = now.toLocaleString();
+
+    // copy snippet
+    document.getElementById('copyBtn').addEventListener('click', async ()=>{
+      const txt = document.getElementById('codeSnippet').innerText;
+      try{await navigator.clipboard.writeText(txt); alert('Commands copied to clipboard')}catch(e){alert('Copy failed — select and copy manually')}
+    });
+
+    // download HTML
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const html = '<!doctype html>\n'+document.documentElement.outerHTML;
+      const blob = new Blob([html], {type:'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    // theme toggle (simple)
+    const themeToggle = document.getElementById('themeToggle');
+    let dark = true;
+    themeToggle.addEventListener('click', ()=>{
+      dark = !dark;
+      if(!dark){
+        document.body.style.background = 'linear-gradient(180deg,#f7fafc,#eef2ff)';
+        document.body.style.color = '#021022';
+        themeToggle.textContent = 'Light'; themeToggle.setAttribute('aria-pressed','true')
+      } else {
+        document.body.style.background = 'linear-gradient(180deg,#071022,#071429)';
+        document.body.style.color = '#e6eef6';
+        themeToggle.textContent = 'Dark'; themeToggle.setAttribute('aria-pressed','false')
+      }
+    });
+
+    // small demo of live logs
+    function appendLog(line){
+      const el = document.createElement('div'); el.textContent = '['+new Date().toLocaleTimeString()+'] '+line; logs.appendChild(el); logs.scrollTop = logs.scrollHeight;
+    }
+    setTimeout(()=>{appendLog('Pipeline started — fetching source...');},800);
+    setTimeout(()=>{appendLog('Build job queued (runner: ubuntu-latest)');},1800);
+    setTimeout(()=>{appendLog('Tests passed (42/42)');},3000);
+    setTimeout(()=>{appendLog('Artifact pushed to registry.example.com/myapp:latest');},4200);
+    setTimeout(()=>{appendLog('Deployment to staging completed');},5200);
+
+  </script>
+</body>
+</html>
